@@ -2,6 +2,9 @@ name: "continuous integration"
 
 on:
   push:
+    branches-ignore: 
+      - alpha
+      - beta
 jobs:
   test:
     runs-on: ubuntu-latest

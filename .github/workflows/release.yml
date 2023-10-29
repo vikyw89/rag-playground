@@ -12,7 +12,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        name: Release
-        uses: ridedott/release-me-action@master
+      - name: release-please-action
+        uses: google-github-actions/release-please-action@v3.7.12
+        with:
+          release-type: node
+          package-name: server
+        
