@@ -1,0 +1,24 @@
+name: continuous integration
+on:
+  push:
+    branches-ignore: 
+      - alpha
+      - beta
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: ENVFILE
+        uses: alekangelov/secret-envfile@v1
+        with:
+          content: ${{ secrets.ENVFILE_DEV }}
+          filename: .env
+      - name: build
+        run: |
+          - cd server
+          - npm install
+          - npm run build
+      - name: test
+        run: |
+          - npm run test

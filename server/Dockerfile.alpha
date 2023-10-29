@@ -1,0 +1,6 @@
+FROM node:16-alpine3.18 as BASE
+WORKDIR /app
+COPY . .
+RUN npm install
+VOLUME /app
+CMD npm run dev
